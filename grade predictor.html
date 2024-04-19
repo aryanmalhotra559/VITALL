@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/dfb5da906e.js" crossorigin="anonymous"></script>
+  <title>VITALL</title>
+</head>
+
+<body>
+  <div class="menu-bar">
+    <div class="mode">
+      <input type="checkbox" class="checkbox" id="checkbox">
+      <label for="checkbox" class="checkbox-label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <span class="ball"></span>
+      </label>
+    </div>
+    <div class="menuright">
+      <div class="menu-item"><a href="index.html">Home</a></div>
+      <div class="menu-item"><a href="grade predictor.html">Grade Predictor</a></div>
+      <div class="menu-item"><a href="quick cgpa.html">CGPA Calculator</a></div>
+    </div>
+  </div>
+  <div class="container">
+    <h1>Grade Predictor</h1>
+    <div class="lr">
+      <div class="left">
+        <label for="cat1">CAT 1 Marks (max 50):</label><br>
+        <input type="number" id="cat1" class="data-input" placeholder="Enter CAT 1 marks" required><br>
+        <label for="cat2">CAT 2 Marks (max 50):</label><br>
+        <input type="number" id="cat2" class="data-input" placeholder="Enter CAT 2 marks" required><br>
+        <label for="internals">Internals Marks (max 30):</label><br>
+        <input type="number" id="internals" class="data-input" placeholder="Enter internals marks" required><br>
+        <label for="fat">FAT Marks (max 100):</label><br>
+        <input type="number" id="fat" class="data-input" placeholder="Enter FAT marks" required><br>
+      </div>
+      <div class="right">
+        <label for="cat1avg">CAT 1 Class Average (max 50):</label><br>
+        <input type="number" id="cat1avg" class="data-input" placeholder="Enter CAT 1 average" required><br>
+        <label for="cat2avg">CAT 2 Class Average (max 50):</label><br>
+        <input type="number" id="cat2avg" class="data-input" placeholder="Enter CAT 2 average" required><br>
+        <label for="internalsavg">Internals approximate Class Average (max 30):</label><br>
+        <input type="number" id="internalsavg" class="data-input" placeholder="Enter internals average" required><br>
+        <label for="fatavg">FAT approximate Class Average (max 100):</label><br>
+        <input type="number" id="fatavg" class="data-input" placeholder="Enter FAT average" required><br>
+      </div>
+    </div>
+    <button class="predict" onclick="predictGrade()">Predict Grade</button>
+    <br>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function predictGrade() {
+      const cat1Marks = parseInt(document.getElementById('cat1').value) * 0.3;
+      const cat2Marks = parseInt(document.getElementById('cat2').value) * 0.3;
+      const internalsMarks = parseInt(document.getElementById('internals').value);
+      const fatMarks = parseInt(document.getElementById('fat').value) * 0.4;
+
+      const cat1Avg = parseInt(document.getElementById('cat1avg').value) * 0.3;
+      const cat2Avg = parseInt(document.getElementById('cat2avg').value) * 0.3;
+      const internalsAvg = parseInt(document.getElementById('internalsavg').value);
+      const fatAvg = parseInt(document.getElementById('fatavg').value) * 0.4;
+
+
+
+      const classAvg = cat1Avg + cat2Avg + internalsAvg + fatAvg;
+      const totalMarks = cat1Marks + cat2Marks + internalsMarks + fatMarks;
+
+      var grade;
+      if (totalMarks >= (classAvg + 18.75)) {
+        grade = 'S';
+      } else if (totalMarks >= (classAvg + 6.25)) {
+        grade = 'A';
+      } else if (totalMarks >= (classAvg - 6.25)) {
+        grade = 'B';
+      } else if (totalMarks >= (classAvg - 12.5)) {
+        grade = 'C';
+      } else if (totalMarks >= (classAvg - 18.75)) {
+        grade = 'D';
+      } else if (totalMarks >= (classAvg - 25.0) && totalMarks > 50) {
+        grade = 'E';
+      } else {
+        grade = 'F';
+      }
+      if (fatMarks < 16) {
+        grade = 'N';
+      }
+      document.getElementById('result').innerHTML = 'Your Estimated Grade: ' + grade;
+    }
+
+    const darkMode = localStorage.getItem('darkMode');
+    const checkbox = document.getElementById('checkbox');
+
+    if (darkMode === 'enabled') {
+      document.body.classList.add('dark');
+      checkbox.checked = true;
+    }
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        document.body.classList.add('dark');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        document.body.classList.remove('dark');
+        localStorage.setItem('darkMode', null);
+      }
+    });
+
+  </script>
+</body>
+
+</html>

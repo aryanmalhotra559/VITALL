@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10+Charted&family=Jersey+20&display=swap');
+
+/*grade predictor*/
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+    margin-top: 20px;
+}
+
+.checkbox-label {
+    background-color: #e7717d;
+    width: 40px;
+    height: 16px;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.fa-sun {
+    color: #f39c12;
+}
+
+.checkbox-label .ball {
+    background-color: #fff;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked+.checkbox-label .ball {
+    transform: translateX(24px);
+}
+
+body.dark {
+    background-image: linear-gradient(to right, #0b0c01, #1f2833);
+    color: #d3d9d4;
+}
+
+body.dark h1 {
+    color: #45a29e;
+}
+
+body.dark .predict {
+    background-color: #45a29e;
+}
+
+body.dark .checkbox-label {
+    background-color: #45a29e;
+}
+
+body {
+    background-image: linear-gradient(to right, #e3e2df, #e3afbc);
+}
+
+.container {
+    margin-left: 300px;
+    margin-top: 150px;
+    font-size: 20px;
+}
+
+h1 {
+    color: #e7717d;
+}
+
+.lr {
+    display: flex;
+}
+
+.data-input {
+    width: 400px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+label {
+    margin: 5px;
+}
+
+.predict {
+    margin-left: 5px;
+    margin-top: 15px;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #e7717d;
+    color: white;
+}
+
+#result {
+    margin-left: 5px;
+    margin-top: 15px;
+}
+
+/*cgpa calculator*/
+
+.container2 {
+    margin-left: 500px;
+    margin-top: 150px;
+    font-size: 20px;
+}
+
+.cgpabutton {
+    margin-left: 5px;
+    height: 40px;
+    width: 120px;
+    border-radius: 10px;
+    background-color: #e7717d;
+    color: white;
+}
+
+body.dark .cgpabutton {
+    background-color: #45a29e;
+}
+
+#cgpa {
+    margin-left: 5px;
+}
+
+#result {
+    font-size: 25px;
+}
+
+/*index*/
+
+.menu-bar {
+    color: #0b0c01;
+    display: flex;
+    justify-content: space-between;
+    align-items: right;
+    height: 50px;
+}
+
+.menu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: #0b0c01
+}
+
+.menu-item a:hover {
+    color: #e7717d;
+}
+
+body.dark .menu-bar {
+    color: white;
+}
+
+body.dark .menu-item a {
+    color: white;
+}
+
+body.dark .menu-item a:hover {
+    color: #45a29e;
+}
+
+.menuright {
+    display: flex;
+}
+
+body.dark .name {
+    color: #45a29e;
+}
+
+.name {
+    display: flex;
+    margin-left: 520px;
+    margin-top: 270px;
+    font-size: 200px;
+    color: #e7717d;
+}
+
+.jersey-10-charted-regular {
+    font-family: "Jersey 10 Charted", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.jersey-20-regular {
+    font-family: "Jersey 20", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}

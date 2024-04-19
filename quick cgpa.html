@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" type="text/css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/dfb5da906e.js" crossorigin="anonymous"></script>
+  <title>VITALL</title>
+</head>
+
+<body>
+  <div class="menu-bar">
+    <div class="mode">
+      <input type="checkbox" class="checkbox" id="checkbox">
+      <label for="checkbox" class="checkbox-label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <span class="ball"></span>
+      </label>
+    </div>
+    <div class="menuright">
+      <div class="menu-item"><a href="index.html">Home</a></div>
+      <div class="menu-item"><a href="grade predictor.html">Grade Predictor</a></div>
+      <div class="menu-item"><a href="quick cgpa.html">CGPA Calculator</a></div>
+    </div>
+  </div>
+  <div class="container2">
+    <h1>CGPA Calculator</h1>
+    <label for="prevCGPA">CGPA till Last Semester:</label><br>
+    <input type="number" id="prevCGPA" class="data-input" placeholder="Enter CGPA" required><br>
+    <label for="prevCredits">Credits Completed till Last Semester:</label><br>
+    <input type="number" id="prevCredits" class="data-input" placeholder="Enter credits" required><br>
+    <label for="currGPA">GPA This Semester:</label><br>
+    <input type="number" id="currGPA" class="data-input" placeholder="Enter GPA" required><br>
+    <label for="currCredits">Credits This Semester:</label><br>
+    <input type="number" id="currCredits" class="data-input" placeholder="Enter credits" required><br>
+    <br><br>
+    <button class="cgpabutton" onclick="calculateCGPA()">Calculate</button>
+    <br><br>
+    <div id="cgpa">Your CGPA: </div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateCGPA() {
+      const prevCGPA = parseFloat(document.getElementById('prevCGPA').value);
+      const prevCredits = parseInt(document.getElementById('prevCredits').value);
+      const currCredits = parseInt(document.getElementById('currCredits').value);
+      const currGPA = parseFloat(document.getElementById('currGPA').value);
+      const totalCredits = prevCredits + currCredits;
+      const totalQualityPoints = prevCGPA * prevCredits + currGPA * currCredits;
+      const cgpa = totalQualityPoints / totalCredits;
+      const resultElement = document.getElementById('result');
+      resultElement.innerHTML = '';
+      animateValue(resultElement, 0, cgpa, 1000);
+      setColor(resultElement, cgpa);
+      document.getElementById('cgpa').style.display = 'inline';
+    }
+
+    function animateValue(obj, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = (progress * (end - start) + start).toFixed(2);
+        obj.innerHTML = value;
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    function setColor(element, cgpa) {
+      if (cgpa < 4.0) {
+        element.style.color = '#ff004f';
+      } else if (cgpa > 9.0) {
+        element.style.color = '#32CD32';
+      } else {
+        element.style.color = '#0066CC';
+      }
+    }
+
+    const darkMode = localStorage.getItem('darkMode');
+    const checkbox = document.getElementById('checkbox');
+
+    if (darkMode === 'enabled') {
+      document.body.classList.add('dark');
+      checkbox.checked = true;
+    }
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        document.body.classList.add('dark');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        document.body.classList.remove('dark');
+        localStorage.setItem('darkMode', null);
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" type="text/css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/dfb5da906e.js" crossorigin="anonymous"></script>
+    <title>VITALL</title>
+</head>
+
+<body>
+    <div class="menu-bar">
+        <div class="mode">
+            <input type="checkbox" class="checkbox" id="checkbox">
+            <label for="checkbox" class="checkbox-label">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+                <span class="ball"></span>
+            </label>
+        </div>
+        <div class="menuright">
+            <div class="menu-item"><a href="index.html">Home</a></div>
+            <div class="menu-item"><a href="grade predictor.html">Grade Predictor</a></div>
+            <div class="menu-item"><a href="quick cgpa.html">CGPA Calculator</a></div>
+        </div>
+    </div>
+
+    <div class="name">
+        <div class="name-left jersey-10-charted-regular jersey-20-regular">
+            <h>VIT</h>
+        </div>
+        <div class="name-right jersey-10-charted-regular jersey-20-regular">
+            <h>ALL</h>
+        </div>
+    </div>
+    <script>
+        const darkMode = localStorage.getItem('darkMode');
+        const checkbox = document.getElementById('checkbox');
+
+        if (darkMode === 'enabled') {
+            document.body.classList.add('dark');
+            checkbox.checked = true;
+        }
+
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+                document.body.classList.add('dark');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                document.body.classList.remove('dark');
+                localStorage.setItem('darkMode', null);
+            }
+        });
+    </script>
+</body>
+
+</html>
